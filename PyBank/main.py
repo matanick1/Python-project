@@ -46,7 +46,7 @@ with open(csvpath) as csvfile:
     # loop through the rows
     for row in reader:  
 
-    # count the rows in "data". Each row is a month
+    # count the rows in "reader". Each row is a month
         month_count = month_count + 1
       
     # add up the profit and losses
