@@ -133,11 +133,6 @@ with open(csvpath) as csvfile:
         text.write(f'Greatest Increase In Profits: {date_greatest_increase} ({greatest_increase}) \n')
         text.write(f'Greatest Decrease In Profits: {date_greatest_decrease} ({greatest_decrease}) \n')
         
-        
-    
-
-        
-        
 
 
 

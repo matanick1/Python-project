@@ -67,39 +67,41 @@ with open(csvpath) as csvfile:
     # find the percentage of votes per candidate
         percentage_per = (votes_per/ballot_id_count) * 100
 
-    # add those values to the percentage per candidate list
-        vote_percentages_per_candidate_list.append(percentage_per)
-
     # use this formula to convert many decimals to 3 decimals
         percentage_per = "%.3f%%" % percentage_per
-       
-    # winner equals largest vote count*************doesnt' work
-       # winner_total =  max(votes_per)
-        
+    
+    
+    # add those values to the percentage per candidate list
+        vote_percentages_per_candidate_list.append(percentage_per)
+   
+    # find the highest number of votes to determine winner
+        most_votes = max(vote_counts_per_candidate_list)
+
     # print report
 
     print(f'Election Results \n')
     print(f'----------------------------------------------- \n')
     print(f'Total Votes: {ballot_id_count} \n')
     print(f'----------------------------------------------- \n')
-    # for values in range(len(unique_candidates)):
-        # print(f'{unique_candidates[values]}: {vote_percentages_per_candidate_list[values]} {vote_counts_per_candidate_list[values]}')
-    
-    # for index, value in enumerate(unique_candidates):
-        # print(f'{unique_candidates[index]}: {vote_percentages_per_candidate_list[index]} {vote_counts_per_candidate_list[index]}')
-
-    for i, word in enumerate(vote_percentages_per_candidate_list):
-        print(i, word)
-
-
-    
-        
-        
-       
    
+    #   Enumerate function gives the index number and then the value of that index number. This loop is saying to loop through the unique
+    #   candidates a find the index value of the candidate and then the candidate. Then, after looping, we're calling the index to print the 
+    #   "0" value unique candidate, the "0" value vote percentage per candidate, and the "0" value vote count per candidate. Then it
+    #   loops through the "1" value of all 3. And so on. 
+    for index, name in enumerate(unique_candidates):
+        print(f'{unique_candidates[index]}: {vote_percentages_per_candidate_list[index]} ({vote_counts_per_candidate_list[index]}) \n')
+
+    print(f'----------------------------------------------- \n')
     
+    # same concept as above. Loop through the vote count totals to find the index value of the vote count and the value of the vote count.
+    for index, vote_count in enumerate(vote_counts_per_candidate_list):
+    
+    # Conditional to say if the vote count total of each index value is equal to the most votes then we print the unique candidate with
+    # that same index. That is the winner
+        if  vote_counts_per_candidate_list[index] == most_votes:
+            print(f'Winner: {unique_candidates[index]} \n')
 
     
+    print(f'----------------------------------------------- \n')
+
         
-    
-
