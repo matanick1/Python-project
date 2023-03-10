@@ -1,13 +1,17 @@
 import os
 import csv
 
-
 # Create a variable for the path to the CSV file
-csvpath =  (r'C:\Users\mybub\Dropbox\PC\Desktop\python-challenge\PyPoll\Resources\election_data.csv')
+CSV_PATH =  os.path.join('Resources', 'election_data.csv')
+# Specify the file to write to
+RESULTS_PATH = os.path.join('Analysis', 'Results.txt')
+
+# Change the working directory to the location of the script
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 # Open the file and store the contents in the
-# variable "csvfile"
-with open(csvpath) as csvfile:
+# variable "CSV_PATH"
+with open(CSV_PATH) as csvfile:
 
     # CSV reader specifies delimiter and variable
     # that holds contents
@@ -104,20 +108,17 @@ with open(csvpath) as csvfile:
     
     print(f'----------------------------------------------- \n')
 
-    # Specify the file to write to
-    results_path = (r"C:\Users\mybub\Dropbox\PC\Desktop\python-challenge\PyPoll\Analysis\Results.txt")
-        
     # Open the file using "write" mode. Specify the variable to
     # hold the contents
-    with open(results_path, 'w') as text:
-        text.write(f'Election Results \n')
-        text.write(f'----------------------------------------------- \n')
-        text.write(f'Total Votes: {ballot_id_count} \n')
-        text.write(f'----------------------------------------------- \n')
+    with open(RESULTS_PATH, 'w') as text:
+        text.write(f'Election Results \n\n')
+        text.write(f'----------------------------------------------- \n\n')
+        text.write(f'Total Votes: {ballot_id_count} \n\n')
+        text.write(f'----------------------------------------------- \n\n')
         for index, name in enumerate(unique_candidates):
-            text.write(f'{unique_candidates[index]}: {vote_percentages_per_candidate_list[index]} ({vote_counts_per_candidate_list[index]}) \n')
-        text.write(f'----------------------------------------------- \n')
+            text.write(f'{unique_candidates[index]}: {vote_percentages_per_candidate_list[index]} ({vote_counts_per_candidate_list[index]}) \n\n')
+        text.write(f'----------------------------------------------- \n\n')
         for index, vote_count in enumerate(vote_counts_per_candidate_list):
             if  vote_counts_per_candidate_list[index] == most_votes:
-                text.write(f'Winner: {unique_candidates[index]} \n')
-        text.write(f'----------------------------------------------- \n')
+                text.write(f'Winner: {unique_candidates[index]} \n\n')
+        text.write(f'----------------------------------------------- \n\n')
