@@ -104,4 +104,20 @@ with open(csvpath) as csvfile:
     
     print(f'----------------------------------------------- \n')
 
+    # Specify the file to write to
+    results_path = (r"C:\Users\mybub\Dropbox\PC\Desktop\python-challenge\PyPoll\Analysis\Results.txt")
         
+    # Open the file using "write" mode. Specify the variable to
+    # hold the contents
+    with open(results_path, 'w') as text:
+        text.write(f'Election Results \n')
+        text.write(f'----------------------------------------------- \n')
+        text.write(f'Total Votes: {ballot_id_count} \n')
+        text.write(f'----------------------------------------------- \n')
+        for index, name in enumerate(unique_candidates):
+            text.write(f'{unique_candidates[index]}: {vote_percentages_per_candidate_list[index]} ({vote_counts_per_candidate_list[index]}) \n')
+        text.write(f'----------------------------------------------- \n')
+        for index, vote_count in enumerate(vote_counts_per_candidate_list):
+            if  vote_counts_per_candidate_list[index] == most_votes:
+                text.write(f'Winner: {unique_candidates[index]} \n')
+        text.write(f'----------------------------------------------- \n')
